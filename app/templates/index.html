@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сортировка пицц из Пиццбурга</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h2 {
+            color: #555;
+            margin-top: 20px;
+        }
+        p {
+            font-size: 16px;
+            color: #666;
+        }
+        .data {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+            background-color: white;
+        }
+        .data th, .data td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .data th {
+            background-color: #fa8072;
+            color: white;
+        }
+        .data tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .sort-button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 15px;
+            background-color: #fa8072;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .sort-button:hover {
+            background-color: #dc143c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Сортировка пицц из Пиццбурга</h1>
+
+    <h2>Самая дешевая пицца:</h2>
+    <p><strong>Название:</strong> {{ cheapest_pizza.pizza_name }} </p>
+    <p><strong>Цена:</strong> {{ cheapest_pizza.price }} </p>
+    <p><strong>Ингредиенты:</strong> {{ cheapest_pizza.ingredients }} </p>
+
+    <h2>Самая дорогая пицца:</h2>
+    <p><strong>Название:</strong> {{ most_expensive_pizza.pizza_name }} </p>
+    <p><strong>Цена:</strong> {{ most_expensive_pizza.price }} </p>
+    <p><strong>Ингредиенты:</strong> {{ most_expensive_pizza.ingredients }} </p>
+
+    <div>
+        <h2>Сортировать по:</h2>
+        <a class="sort-button" href="/?sort_by=name&order=asc">Название (А-Я)</a>
+        <a class="sort-button" href="/?sort_by=name&order=desc">Название (Я-А)</a>
+        <a class="sort-button" href="/?sort_by=price&order=asc">Цена (по возрастанию)</a>
+        <a class="sort-button" href="/?sort_by=price&order=desc">Цена (по убыванию)</a>
+    </div>
+
+    {% for table in tables %}
+        {{ table|safe }}
+    {% endfor %}
+</body>
+</html>
