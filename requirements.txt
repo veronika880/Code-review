@@ -1,0 +1,5 @@
+pandas
+Flask
+requests
+bs4
+lxml
